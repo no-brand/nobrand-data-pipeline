@@ -12,3 +12,13 @@ variable "aws_profile" {
   description = "aws profile"
   type        = string
 }
+
+variable "project" {
+  description = "project prefix"
+  type        = string
+}
+
+variable "sfn_definition_file" {
+  description = "aws step function definition"
+  default     = "step_function.json"
+}
