@@ -22,3 +22,7 @@ variable "sfn_definition_file" {
   description = "aws step function definition"
   default     = "step_function.json"
 }
+
+variable "emr_access_key_name" {
+  description = "name of ec2 key pair to access ssh to master node"
+}

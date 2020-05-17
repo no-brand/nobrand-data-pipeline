@@ -55,7 +55,8 @@ resource "aws_iam_role_policy" "iam_role_policy_sfn" {
 data "template_file" "sfn_definition" {
   template = file(var.sfn_definition_file)
   vars     = {
-    log_s3_path = "${aws_s3_bucket.s3_bucket_emr.bucket}/${var.aws_region}"
+    log_s3_path  = "${aws_s3_bucket.s3_bucket_emr.bucket}/${var.aws_region}"
+    ec2_key_pair = var.emr_access_key_name
   }
 }
 

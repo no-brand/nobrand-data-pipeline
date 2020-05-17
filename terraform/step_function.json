@@ -22,6 +22,7 @@
         "LogUri": "s3://${log_s3_path}/elasticmapreduce/",
         "Instances": {
           "KeepJobFlowAliveWhenNoSteps": true,
+          "Ec2KeyName": "${ec2_key_pair}",
           "InstanceFleets": [
             {
               "Name": "MyMasterFleet",
@@ -44,7 +45,21 @@
               ]
             }
           ]
-        }
+        },
+        "Configurations": [
+          {
+            "Classification": "spark-env",
+            "Configurations": [
+              {
+                "Classification": "export",
+                "Properties": {
+                  "PYSPARK_PYTHON": "/usr/bin/python3"
+                }
+              }
+            ],
+            "Properties": { }
+          }
+        ]
       },
       "ResultPath": "$.cluster",
       "Next": "END"
